@@ -1,4 +1,4 @@
-import { DynamoDBClient } from '@aws-sdk/client-dynamodb';
+import { DynamoDBClient, ReturnValue } from '@aws-sdk/client-dynamodb';
 import {
   DynamoDBDocumentClient,
   GetCommand,
@@ -64,7 +64,7 @@ export class DynamoService {
       },
       UpdateExpression: updateExpression,
       ExpressionAttributeValues: expressionValues,
-      ReturnValues: 'ALL_NEW', // This will return the updated item
+      ReturnValues: ReturnValue.ALL_NEW, // This will return the updated item
     };
     return this.client.send(new UpdateCommand(params));
   }
