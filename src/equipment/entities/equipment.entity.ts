@@ -3,6 +3,9 @@ import { EquipmentType } from '../enums/equipment.enum';
 
 export class Equipment {
   @IsString()
+  id: string;
+
+  @IsString()
   name: string;
 
   @IsString()

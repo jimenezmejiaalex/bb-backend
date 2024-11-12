@@ -37,9 +37,17 @@ export class BrewMethodService {
       const params = {
         TableName: this.tableName,
       };
+
       const result = await this.dynamoService.scanTable(params);
+      const brewMethods = result.Items as BrewMethod[];
+      const resultMapped = brewMethods.map(({ name, description, id }) => ({
+        name,
+        description,
+        id,
+      }));
+
       this.logger.log('Find All Brew Method success');
-      return result.Items as BrewMethod[];
+      return resultMapped;
     } catch (ex) {
       console.error(ex);
       this.logger.log('Find All Brew Method failed');

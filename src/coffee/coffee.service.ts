@@ -36,8 +36,15 @@ export class CoffeeService {
         TableName: this.tableName,
       };
       const result = await this.dynamoService.scanTable(params);
+      const coffees = result.Items as Coffee[];
+      const resultMapped = coffees.map(({ name, description, coffeeId }) => ({
+        name,
+        description,
+        id: coffeeId,
+      }));
+
       this.logger.log('Find All coffee success');
-      return result.Items as Coffee[];
+      return resultMapped;
     } catch (ex) {
       console.error(ex);
       this.logger.log('Find All coffee failed');
