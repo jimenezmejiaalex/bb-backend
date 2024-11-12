@@ -7,6 +7,8 @@ import { AppConfigModule } from './config/config.module';
 import { DatabaseModule } from './database/database.module';
 import { BrewMethodModule } from './brew-method/brew-method.module';
 import { EquipmentModule } from './equipment/equipment.module';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { EquipmentModule } from './equipment/equipment.module';
     DatabaseModule,
     BrewMethodModule,
     EquipmentModule,
+    UsersModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
