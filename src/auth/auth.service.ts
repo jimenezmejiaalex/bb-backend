@@ -12,7 +12,7 @@ export class AuthService {
 
   async signIn(username: string, pass: string): Promise<any> {
     this.logger.log('Authenticate User started');
-    const user = await this.usersService.validate(username);
+    const user = this.usersService.validate(username);
     if (user?.password !== pass) {
       this.logger.log('Authenticate User Failed');
       throw new UnauthorizedException();
